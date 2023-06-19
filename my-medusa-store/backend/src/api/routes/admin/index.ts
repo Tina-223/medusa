@@ -1,10 +1,11 @@
-import cors from "cors"
-import { Router } from "express"
-import bodyParser from "body-parser"
-import customRouteHandler from "./custom-route-handler"
+import cors from "cors";
+import { Router } from "express";
+import bodyParser from "body-parser";
+import customRouteHandler from "./custom-route-handler";
 import { authenticate, wrapHandler } from "@medusajs/medusa";
 
-const adminRouter = Router()
+const adminRouter = Router();
+
 export function getAdminRouter(adminCorsOptions): Router {
   adminRouter.use(
     /\/admin\/((?!auth).*)/,
@@ -12,10 +13,10 @@ export function getAdminRouter(adminCorsOptions): Router {
     bodyParser.json(), authenticate()
   )
 
-  adminRouter.post(
-    "/my-custom-path",
+  adminRouter.get(
+    "/helloworld",
     wrapHandler(customRouteHandler)
-  )
+  );
 
-  return adminRouter
+  return adminRouter;
 }
