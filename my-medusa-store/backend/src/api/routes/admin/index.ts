@@ -12,11 +12,6 @@ export function getAdminRouter(adminCorsOptions): Router {
     cors(adminCorsOptions),
     bodyParser.json(), authenticate()
   )
-
-  adminRouter.get(
-    "/helloworld",
-    wrapHandler(customRouteHandler)
-  );
-
+  
   return adminRouter;
 }
