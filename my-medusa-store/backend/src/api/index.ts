@@ -26,7 +26,6 @@ export default (rootDirectory: string): Router | Router[] => {
 
   router.get("/products/:productId", (req, res) => {
     const productId = req.params.productId;
-    let responseData = {}
     medusa.admin.products.retrieve(productId)
     .then(({ product }) => {
       res.send(product);
@@ -60,7 +59,8 @@ export default (rootDirectory: string): Router | Router[] => {
       variants: variants,
     })
     .then(({ product }) => {
-      res.send(product.id);
+      responseData["productId"] = product.id
+      res.send(responseData);
     })
     .catch((err) => {
       res.status(500).send(err);
@@ -90,7 +90,8 @@ export default (rootDirectory: string): Router | Router[] => {
       variants: variants,
     })
     .then(({ product }) => {
-      res.send(product.id)
+      responseData["productId"] = product.id
+      res.send(responseData)
       console.log(product.id);
     })
     .catch((err) => {
@@ -100,12 +101,12 @@ export default (rootDirectory: string): Router | Router[] => {
 
   router.delete("/products/:productId", (req, res) => {
     const productId = req.params.productId;
-    // console.log(productId)
+    let responseData = {}
     medusa.admin.products.delete(productId)
     .then(({ id, object, deleted }) => {
       if (deleted) {
-        console.log(id);
-        res.send(id);
+        responseData["productId"] = id;
+        res.send(responseData);
       } else {
         throw new Error("delete fail");
       }
