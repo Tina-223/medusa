@@ -1,10 +1,13 @@
 import { Router } from "express"
 import Medusa from "@medusajs/medusa-js"
 import { stat } from "fs";
+import express from "express";
 
 export default (rootDirectory: string): Router | Router[] => {
   // add your custom routes here
   const router = Router()
+  router.use(express.json())
+  router.use(express.urlencoded({extended: false}))
   const medusa = new Medusa({ baseUrl: "http://localhost:9000", maxRetries: 3, apiKey: "hello" });
 
   router.get("/products", (req, res) => {
@@ -21,8 +24,8 @@ export default (rootDirectory: string): Router | Router[] => {
     });
   });
 
-  router.get("/product/:productNo", (req, res) => {
-    const productId = req.params.productNo;
+  router.get("/products/:productId", (req, res) => {
+    const productId = req.params.productId;
     let responseData = {}
     medusa.admin.products.retrieve(productId)
     .then(({ product }) => {
@@ -33,41 +36,12 @@ export default (rootDirectory: string): Router | Router[] => {
     });
   });
 
-  router.post("/product/:title", (req, res) => {
-    const title = req.params.title;
+
+  router.post("/products", (req, res) => {
+    const title = req.body.title;
     const subtitle = req.body.subtitle;
-    console.log(typeof subtitle);
     const description = req.body.description;
     const categories = req.body.categories;
-    const imageList = req.body.images;
-    const status = req.body.status;
-    const options = req.body.options;
-    const variants = req.body.variants;
-    let responseData = {}
-    console.log(typeof subtitle);
-    // medusa.admin.products.create({
-    //   title: title,
-    //   subtitle: subtitle,
-    //   description: description,
-    //   categories: categories,
-    //   is_giftcard: false,
-    //   discountable: false,
-    //   images: imageList,
-    //   status: status,
-    //   options: options,
-    //   variants: variants,
-    // })
-    // .then(({ product }) => {
-    //   res.send(product.id);
-    // })
-    // .catch((err) => {
-    //   res.status(500).send(err);
-    // });
-  });
-
-  router.put("/product/:title", (req, res) => {
-    const title = req.params.title;
-    const subtitle = req.body.subtitle;
     const imageList = req.body.images;
     const status = req.body.status;
     const options = req.body.options;
@@ -76,6 +50,8 @@ export default (rootDirectory: string): Router | Router[] => {
     medusa.admin.products.create({
       title: title,
       subtitle: subtitle,
+      description: description,
+      categories: categories,
       is_giftcard: false,
       discountable: false,
       images: imageList,
@@ -91,9 +67,41 @@ export default (rootDirectory: string): Router | Router[] => {
     });
   });
 
-  router.delete("/product/:productNo", (req, res) => {
-    const productNo = req.params.productNo;
-    medusa.admin.products.delete(productNo)
+  router.put("/products/:productId", (req, res) => {
+    const productId = req.params.productId;
+    console.log(typeof productId)
+    const title = req.body.title;
+    const subtitle = req.body.subtitle;
+    const description = req.body.description;
+    const categories = req.body.categories;
+    const imageList = req.body.images;
+    const status = req.body.status;
+    const options = req.body.options;
+    const variants = req.body.variants;
+    let responseData = {}
+    medusa.admin.products.update(productId, {
+      title: title,
+      subtitle: subtitle,
+      description: description,
+      categories: categories,
+      discountable: false,
+      images: imageList,
+      status: status,
+      variants: variants,
+    })
+    .then(({ product }) => {
+      res.send(product.id)
+      console.log(product.id);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+  });
+
+  router.delete("/products/:productId", (req, res) => {
+    const productId = req.params.productId;
+    // console.log(productId)
+    medusa.admin.products.delete(productId)
     .then(({ id, object, deleted }) => {
       if (deleted) {
         console.log(id);
