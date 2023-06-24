@@ -1,0 +1,11 @@
+{
+  "name": "medusa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Tina-223/medusa.git",
+  "author": "heewon",
+  "license": "MIT",
+  "dependencies": {
+    "@medusajs/admin": "^6.0.0"
+  }
+}

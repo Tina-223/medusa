@@ -1,0 +1,461 @@
+{
+  "store": {
+    "currencies": [
+      "krw"
+    ]
+  },
+  "users": [
+    {
+      "email": "admin@medusa-test.com",
+      "password": "supersecret"
+    }
+  ],
+  "regions": [
+    {
+      "id": "test-region",
+      "name": "kr",
+      "currency_code": "krw",
+      "tax_rate": 0,
+      "payment_providers": [
+        "manual"
+      ],
+      "fulfillment_providers": [
+        "manual"
+      ],
+      "countries": [
+        "kr"
+      ]
+    }
+  ],
+  "shipping_options": [
+    {
+      "name": "PostFake Standard",
+      "region_id": "test-region",
+      "provider_id": "manual",
+      "data": {
+        "id": "manual-fulfillment"
+      },
+      "price_type": "flat_rate",
+      "amount": 0
+    }
+  ],
+  "products": [
+    {
+      "title": "아메리카노",
+      "categories": [
+        {
+          "id": "coffee"
+        }
+      ],
+      "subtitle": "Americano",
+      "description": null,
+      "handle": null,
+      "is_giftcard": false,
+      "weight": null,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png",
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-back.png",
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-white-front.png",
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-white-back.png"
+      ],
+      "options": [
+        {
+          "title": "Temperature",
+          "values": [
+            "Hot",
+            "Ice"
+          ]
+        },
+        {
+          "title": "Options",
+          "values": [
+            "없음",
+            "샷 추가",
+            "시럽 추가",
+            "헤이즐넛시럽 추가"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Hot / 없음",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Hot"
+            },
+            {
+              "value": "없음"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Hot / 샷 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Hot"
+            },
+            {
+              "value": "샷 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Hot / 시럽 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Hot"
+            },
+            {
+              "value": "시럽 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Hot / 헤이즐넛시럽 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Hot"
+            },
+            {
+              "value": "헤이즐넛시럽 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Ice / 없음",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Ice"
+            },
+            {
+              "value": "없음"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Ice / 샷 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Ice"
+            },
+            {
+              "value": "샷 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Ice / 시럽 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Ice"
+            },
+            {
+              "value": "시럽 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Ice / 헤이즐넛시럽 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Ice"
+            },
+            {
+              "value": "헤이즐넛시럽 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "title": "카페라떼",
+      "categories": [
+        {
+          "id": "coffee"
+        }
+      ],
+      "subtitle": "Caffe Latte",
+      "description": null,
+      "handle": null,
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatshirt-vintage-front.png",
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatshirt-vintage-back.png"
+      ],
+      "options": [
+        {
+          "title": "Temperature",
+          "values": [
+            "Hot",
+            "Ice"
+          ]
+        },
+        {
+          "title": "Options",
+          "values": [
+            "없음",
+            "샷 추가",
+            "시럽 추가",
+            "헤이즐넛시럽 추가"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "Hot / 없음",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Hot"
+            },
+            {
+              "value": "없음"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Hot / 샷 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Hot"
+            },
+            {
+              "value": "샷 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Hot / 시럽 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Hot"
+            },
+            {
+              "value": "시럽 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Hot / 헤이즐넛시럽 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Hot"
+            },
+            {
+              "value": "헤이즐넛시럽 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Ice / 없음",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Ice"
+            },
+            {
+              "value": "없음"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Ice / 샷 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Ice"
+            },
+            {
+              "value": "샷 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Ice / 시럽 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Ice"
+            },
+            {
+              "value": "시럽 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        },
+        {
+          "title": "Ice / 헤이즐넛시럽 추가",
+          "prices": [
+            {
+              "currency_code": "krw",
+              "amount": 500
+            }
+          ],
+          "options": [
+            {
+              "value": "Ice"
+            },
+            {
+              "value": "헤이즐넛시럽 추가"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "coffee",
+      "name": "coffee",
+      "rank": 0,
+      "category_children": [],
+      "handle": "coffee"
+    },
+    {
+      "id": "juice",
+      "name": "juice",
+      "rank": 0,
+      "category_children": [],
+      "handle": "juice"
+    },
+    {
+      "id": "tea",
+      "name": "tea",
+      "rank": 0,
+      "category_children": [],
+      "handle": "tea"
+    },
+    {
+      "id": "ade",
+      "name": "ade",
+      "rank": 0,
+      "category_children": [],
+      "handle": "ade"
+    },
+    {
+      "id": "non-coffee",
+      "name": "non-coffee",
+      "rank": 0,
+      "category_children": [],
+      "handle": "non-coffee"
+    }
+  ]
+}
