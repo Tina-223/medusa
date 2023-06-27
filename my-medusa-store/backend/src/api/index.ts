@@ -2,7 +2,8 @@ import { Router } from "express"
 import Medusa from "@medusajs/medusa-js"
 import { stat } from "fs";
 import express from "express";
-import session from "express-session";
+import fetch from "node-fetch";
+import axios from "axios";
 
 export default (rootDirectory: string): Router | Router[] => {
   // add your custom routes here
@@ -14,22 +15,47 @@ export default (rootDirectory: string): Router | Router[] => {
   productsRouter.use(express.urlencoded({ extended: false }))
   const medusa = new Medusa({ baseUrl: "http://localhost:9000", maxRetries: 3, apiKey: "hello" });
 
-  authRouter.get("/api/v1/admin/auth", (req, res) => {
-    // const requestBody = {}
-    // requestBody["user"] = req.body;
-    // // const user = req.body;
-    // // user["userId"]
-    // requestBody["user"]["userId"] = req.body.id;
+  authRouter.get("/api/v1/admin/auth", async (req, res) => {
     console.log("apipiapofijaodif")
-    // console.log(JSON.stringify(requestBody));
-    medusa.admin.auth.getSession()
-      .then(({ user }) => {
-        console.log(user.id);
-        res.send(user);
-      })
-      .catch((err) => {
-        res.status(500).send(err);
+    // medusa.admin.auth.getSession()
+    //   .then(({ user }) => {
+    //     console.log(user.id);
+    //     res.send(user);
+    //   })
+    //   .catch((err) => {
+    //     res.status(500).send(err);
+    //   });
+    // const customHeader = {}
+    // // console.log(req)
+    // req.session.data.userKey = 'aa'
+    // req.user.userId = 'usr_01H3C0C8MYTQHJZ037GJ1876HV';
+    // customHeader["userId"] = req.user.userId
+    // medusa.admin.auth.getSession()
+    //   .then(({ user }) => {
+    //     console.log(user.id)
+    //   })
+
+    // fetch(`http://localhost:9000/admin/auth`, {
+    //   credentials: "include",
+    // })
+    //   .then((response) => response.json())
+    //   .then(({ user }) => {
+    //     console.log(user.id)
+    //   })
+    try {
+      const sessionCookie = req.headers.cookie;
+      const response = await axios.get("http://localhost:9000/admin/auth", {
+        headers: {
+          Cookie: sessionCookie,
+          Authorization: 'Bearer hello'
+        }
       });
+      const data = response.data;
+      console.log(data)
+    } catch (err) {
+      console.error(err);
+      res.status(500).send(err);
+    }
   });
 
   authRouter.post("/api/v1/admin/auth", (req, res) => {
@@ -41,10 +67,6 @@ export default (rootDirectory: string): Router | Router[] => {
     })
       .then(({ user }) => {
         console.log(user);
-        // req.session.user = {
-        //   email: email,
-        //   password: password
-        // }
         res.send(user);
       })
       .catch((err) => {
